@@ -38,7 +38,3 @@ resource "github_repository" "main" {
   #     prevent_destroy = true
   #   }
 }
-
-output "test" {
-  value = var.conf
-}
