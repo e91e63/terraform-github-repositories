@@ -30,10 +30,15 @@ resource "github_repository" "main" {
   description            = each.value.description
   #   license_template = each.value.license
   name                 = each.key
+  topics               = each.value.topics
   visibility           = each.value.visibility
   vulnerability_alerts = each.value.vulnerability_alerts
 
   #   lifecycle {
   #     prevent_destroy = true
   #   }
+}
+
+output "test" {
+  value = var.conf
 }

@@ -4,7 +4,8 @@ variable "conf" {
     repositories = map(object({
       delete_branch_on_merge = optional(string)
       description            = string
-      license                = optional(string)
+       license                = optional(string)
+      topics                 = optional(list(string))
       visibility             = optional(string)
       vulnerability_alerts   = optional(string)
     }))
