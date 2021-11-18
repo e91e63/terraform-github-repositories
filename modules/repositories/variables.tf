@@ -6,6 +6,7 @@ variable "conf" {
       description            = string
       license                = optional(string)
       visibility             = optional(string)
+      vulnerability_alerts   = optional(string)
     }))
   })
 }
