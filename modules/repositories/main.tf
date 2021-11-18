@@ -28,13 +28,13 @@ resource "github_repository" "main" {
 
   delete_branch_on_merge = each.value.delete_branch_on_merge
   description            = each.value.description
-  #   license_template = each.value.license
-  name                 = each.key
-  topics               = each.value.topics
-  visibility           = each.value.visibility
-  vulnerability_alerts = each.value.vulnerability_alerts
+  license_template       = each.value.license
+  name                   = each.key
+  topics                 = each.value.topics
+  visibility             = each.value.visibility
+  vulnerability_alerts   = each.value.vulnerability_alerts
 
-  #   lifecycle {
-  #     prevent_destroy = true
-  #   }
+  lifecycle {
+    prevent_destroy = true
+  }
 }
