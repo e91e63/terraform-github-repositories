@@ -35,6 +35,7 @@ resource "github_repository" "main" {
   vulnerability_alerts   = each.value.vulnerability_alerts
 
   lifecycle {
+    ignore_changes  = [etag]
     prevent_destroy = true
   }
 }
