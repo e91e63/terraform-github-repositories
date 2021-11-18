@@ -18,7 +18,7 @@ locals {
     repositories = {
       delete_branch_on_merge = true
       license                = "apache-2.0"
-      visibility             = "private"
+    #   visibility             = "private"
     }
   })
 }
@@ -29,9 +29,15 @@ resource "github_repository" "main" {
   description            = each.value.description
   #   license_template = each.value.license
   name       = each.key
-  visibility = each.value.visibility
+  topics     = each.value.topics
+  visibility = var.conf.repositories[each.key].visibility
+#   visibility = each.value.visibility
 
   #   lifecycle {
   #     prevent_destroy = true
   #   }
+}
+
+output "test" {
+    value = var.conf
 }
