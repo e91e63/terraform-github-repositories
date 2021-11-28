@@ -26,6 +26,8 @@ locals {
       vulnerability_alerts   = true
     }
   })
+
+  # for each workflow filter repositories with that tag
   repository_hooks = { for hook in flatten([
     for _, workflow in var.workflows_info : [
       for _, repo in github_repository.main : {
@@ -49,11 +51,6 @@ resource "github_branch_protection" "main" {
   push_restrictions      = []
   repository_id          = each.value.name
   require_signed_commits = true
-
-  # required_pull_request_reviews {
-  #   dismissal_restrictions = []
-  #   dismiss_stale_reviews  = true
-  # }
 
   required_status_checks {
     contexts = []
@@ -79,7 +76,6 @@ resource "github_repository" "main" {
 }
 
 resource "github_repository_webhook" "main" {
-  # for each workflow filter repositories with that tag
   for_each = local.repository_hooks
 
   active     = true
